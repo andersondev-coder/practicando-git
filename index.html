@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        esta es una pruebas de HTML
+    </h1>
+    <input type="button" name="este mi button">
+</body>
+
+<script>
+    
+    const login  = async ()=>{
+
+        const repuesta =  await fetch("http://lxtdnetcor003:10492/api/Auth/login",{
+
+            method:"POST",
+            headers:{"Content-Type": "application/json"},
+            body: JSON.stringify({
+                    username:"QATest",
+                    password:"QATest01"
+            })
+        });
+const data = await repuesta.json();
+
+console.log("Aqui tiene que ir el Token",data);
+}
+login();
+</script>
+</html>
