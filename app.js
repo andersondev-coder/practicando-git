@@ -2,7 +2,7 @@ const express = require('express');
 const crypto = require('crypto');
 const app = express();
 
-// CORRECCIÓN 1: Eliminamos 'eval'. Validamos la entrada usando una lista blanca segura.
+// CORRECCIÓN 1: Eliminamos 'eval'. Validamos la entrada ushhkhkjhkjhkjhando una lista blanca segura.
 app.get('/ejecutar', (req, res) => {
     const comando = req.query.cmd;
     
