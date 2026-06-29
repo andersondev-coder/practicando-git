@@ -1,19 +1,34 @@
 const express = require('express');
+const crypto = require('crypto');
 const app = express();
 
-// VULNERABILIDAD 1: Inyección de código mediante el uso de eval()
+// CORRECCIÓN 1: Eliminamos 'eval'. Validamos la entrada usando una lista blanca segura.
 app.get('/ejecutar', (req, res) => {
-    let codigo = req.query.cmd;
-    let resultado = eval(codigo); // Semgrep saltará aquí obligatoriamente
-    res.send(resultado);
+    const comando = req.query.cmd;
+    
+    const operacionesPermitidas = {
+        'saludar': '¡Hola, bienvenido al sistema seguro!',
+        'fecha': new Date().toISOString(),
+        'estado': 'Servidor operando de forma segura con estándares DevSecOps'
+    };
+
+    if (operacionesPermitidas[comando]) {
+        res.send(operacionesPermitidas[comando]);
+    } else {
+        res.status(400).send('Operación no permitida o inválida.');
+    }
 });
 
-// VULNERABILIDAD 2: Algoritmo de cifrado obsoleto (MD5 no es seguro)
-const crypto = require('crypto');
-function hashPassword(password) {
-    return crypto.createHash('md5').update(password).digest('hex');
+// CORRECCIÓN 2: Reemplazamos MD5 por scrypt (Algoritmo seguro y resistente)
+function hashPasswordSeguro(password, callback) {
+    const salt = crypto.randomBytes(16).toString('hex');
+    
+    crypto.scrypt(password, salt, 64, (err, derivedKey) => {
+        if (err) return callback(err);
+        callback(null, `${salt}:${derivedKey.toString('hex')}`);
+    });
 }
 
 app.listen(3000, () => {
-    console.log('Servidor corriendo para pruebas de seguridad SAST');
+    console.log('Servidor seguro corriendo en el puerto 3000');
 });
