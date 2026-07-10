@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 cambio 4
+=======
+tres
+esta es otra modificacion
+este el cambio desde la rama de pruebas
+>>>>>>> 13852055deac1d2017376eef58e2e98240763377
