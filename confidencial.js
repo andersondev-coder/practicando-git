@@ -1,4 +1,4 @@
-// Simulando credenciales de base de datos o servicio en la nube
-const AWS_SECRET_KEY = "AKIAIMNO7VMNNEXAMPLE"; 
-console.log("Conectado con éxito");
-//esto es un secreto
+// Simulando un token de acceso expuesto
+const GITHUB_TOKEN = "ghp_000000000000000000000000000000000000";
+console.log("Token cargado");
+
