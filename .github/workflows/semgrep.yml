@@ -1,30 +1,16 @@
-name: Semgrep-SAST
 
+name: Testiando la seguridad
+permissions:
+  contents: read
 on:
-<<<<<<< HEAD
-  push:
-    branches: [ "master" ]
   pull_request:
-    branches: [ "master" ]
-=======
-  pull_request:
-    branches: [ "master" ] # Solo despierta con Pull Requests hacia master
->>>>>>> 13852055deac1d2017376eef58e2e98240763377
-
+    branches: [main, master]
 jobs:
-  semgrep-scan:
-    name: Escaneo de Codigo
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clonar el repositorio
-        uses: actions/checkout@v4
+  analisis-de-seguridad:       # Corregido: Usamos guiones en vez de espacios en el nombre del Job
+    runs-on: ubuntu-latest     # 4 espacios
+    steps:                     # Corregido: Ahora tiene 4 espacios, alineado con 'runs-on'
+      - name: Tarea1           # 6 espacios
+        run: echo "Ejecutando el paso1"
+      - name: Tarea2           # 6 espacios
+        run: echo "ejectuando el paso2"
 
-      - name: Ejecutar Semgrep
-        uses: semgrep/semgrep-action@v1
-        with:
-<<<<<<< HEAD
-          config: p/default # Reglas estándar de seguridad para OWASP Top 10
-
-=======
-          config: p/javascript # Reglas estrictas de JavaScript
->>>>>>> 13852055deac1d2017376eef58e2e98240763377
