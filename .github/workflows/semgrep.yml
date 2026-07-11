@@ -1,5 +1,7 @@
 
 name: Testiando la seguridad
+permissions:
+  contents: read
 on:
   pull_request:
     branches: [main, master]
