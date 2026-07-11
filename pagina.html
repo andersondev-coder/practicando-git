@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probando XSS</title>
+</head>
+<body>
+    <label for="">Introduce la que quieras:</label> 
+    <input type="text" id="p1">
+    <label for="">Aqui lo voy a presentar:</label><br>
+    <h1 id="p2">"<<aqui vamos>>"</h1>
+    <button id="ejecutar">ACEPTAR</button>
+</body>
+<script>
+const p1 = document.getElementById("p1");
+const p2 = document.getElementById("p2");
+const boton = document.getElementById("ejecutar");
+ 
+boton.addEventListener('click',()=>{
+
+        p2.textContent = p1.value;
+
+
+})
+
+</script>
+</html>
